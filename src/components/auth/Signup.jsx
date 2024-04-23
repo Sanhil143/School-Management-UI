@@ -2,35 +2,37 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   const [user, setUser] = useState({
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
   });
   const navigate = useNavigate();
 
-  const formdata = new FormData();
-  formdata.append("email", user.email);
-  formdata.append("password", user.password);
+  const formData = new FormData();
+  formData.append("firstName", user.firstname);
+  formData.append("lastName", user.lastname);
+  formData.append("email", user.email);
+  formData.append("password", user.password);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/v1/user/login`,
-        formdata
+        `http://localhost:3000/api/v1/user/signup`,
+        formData
       );
-      if (response.data) {
-        localStorage.setItem("accessToken", response.data.token);
-        localStorage.setItem("userId", response.data.user[0].userId);
-        if (response.data.user[0].role === "Admin") {
-          navigate("/adminDashboard");
-        } else {
-          navigate("/dashboard");
-        }
+  
+      if (response.data.message === "user account created successfully") {
+        navigate('/')
+      }
+      else{
+        alert('internal server error')
       }
     } catch (error) {
-      console.error(error.message);
+      alert('internal server error')
     }
   };
 
@@ -39,11 +41,10 @@ const Login = () => {
     setUser({ ...user, [name]: value });
   };
   const inputCss = {
+    height: "40px",
     border: "none",
     borderBottom: "1px solid black",
-    height: "40px",
     marginTop: "10px",
-    width: "250px",
     outline: "none",
   };
   return (
@@ -54,7 +55,6 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        boxSizing: "border-box",
       }}
     >
       <div
@@ -66,47 +66,62 @@ const Login = () => {
           borderRadius: "10px",
         }}
       >
-        <h1 style={{ marginTop: "50px" }}>Welcome Back</h1>
-        <form
-          onSubmit={handleSubmit}
+        <h1
           style={{
-            margin: "auto",
             marginTop: "50px",
-            height: "300px",
-            width: "300px",
           }}
         >
+          Welcome
+        </h1>
+        <form onSubmit={handleSubmit}>
           <div
             style={{
-              marginTop: "50px",
+              display: "flex",
+              flexDirection: "column",
+              width: "250px",
+              margin: "auto",
+              marginTop: "40px",
+              height: "240px",
             }}
           >
             <input
               style={inputCss}
-              type="email"
+              placeholder="firstname"
+              name="firstname"
+              type="text"
+              value={user.firstname}
+              onChange={handleChange}
+              required
+            />
+            <input
+              style={inputCss}
+              placeholder="lastname"
+              name="lastname"
+              type="text"
+              value={user.lastname}
+              onChange={handleChange}
+              required
+            />
+            <input
+              style={inputCss}
               placeholder="email"
               name="email"
+              type="email"
               value={user.email}
               onChange={handleChange}
               required
             />
-            <br></br>
             <input
               style={inputCss}
-              type="password"
               placeholder="password"
               name="password"
+              type="password"
               value={user.password}
               onChange={handleChange}
               required
             />
           </div>
-          <div
-            style={{
-              marginTop: "40px",
-              height: "50px",
-            }}
-          >
+          <div>
             <button
               style={{
                 padding: "7px 0px 7px 0px",
@@ -115,19 +130,23 @@ const Login = () => {
                 cursor: "pointer",
               }}
             >
-              LOGIN
+              SIGNUP
             </button>
           </div>
         </form>
-        <p>
-          Don't have an account?
+        <p
+          style={{
+            marginTop: "40px",
+          }}
+        >
+          Already have an account?
           <Link
             style={{
               textDecoration: "none",
             }}
-            to="/signup"
+            to="/"
           >
-            signup
+            login
           </Link>
         </p>
       </div>
@@ -135,4 +154,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
