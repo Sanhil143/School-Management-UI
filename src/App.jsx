@@ -4,6 +4,7 @@ import Login from './components/auth/Login'
 import AdminDashboard from './components/common/AdminDashboard'
 import Dashboard from './components/common/Dashboard'
 import Signup from './components/auth/Signup'
+import Navbar from './components/common/Navbar'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/adminDashboard' element={<AdminDashboard/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/navbar' element={<Navbar/>}/>
       </Routes>
     </BrowserRouter>
     </>
