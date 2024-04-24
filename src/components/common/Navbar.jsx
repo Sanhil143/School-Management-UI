@@ -1,7 +1,11 @@
 import React from "react";
 import "../../css/Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({setPage}) => {
+
+  const handleClick = (page) => {
+    setPage(page);    
+  }
   return (
     <div
       style={{
@@ -41,9 +45,9 @@ const Navbar = () => {
               marginLeft: "160px",
             }}
           >
-            <li className="navLi">Students</li>
-            <li className="navLi">Teachers</li>
-            <li className="navLi">Classes</li>
+            <li className="navLi" onClick={() => handleClick("students")}>Students</li>
+            <li className="navLi" onClick={() => handleClick("teachers")}>Teachers</li>
+            <li className="navLi" onClick={() => handleClick("classes")}>Classes</li>
           </ul>
         </div>
 
