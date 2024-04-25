@@ -1,10 +1,16 @@
 import React from "react";
 import "../../css/Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({setPage}) => {
-
+  const navigate = useNavigate()
   const handleClick = (page) => {
     setPage(page);    
+  }
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/')
   }
   return (
     <div
@@ -12,7 +18,6 @@ const Navbar = ({setPage}) => {
         width: "100%",
         height: "60px",
         display: "flex",
-        position:"fixed"
       }}
     >
       <div
@@ -61,7 +66,7 @@ const Navbar = ({setPage}) => {
           }}
         >
           <li className="navLi">Profile</li>
-          <li className="navLi">Logout</li>
+          <li className="navLi" onClick={() => handleLogout()}>Logout</li>
         </ul>
       </div>
     </div>

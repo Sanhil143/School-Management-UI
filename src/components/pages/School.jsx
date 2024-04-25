@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {dateFormatter} from '../../utils/dateFormater'
 
-const School = () => {
+const School = ({setSchoolId}) => {
   const [school,setSchool] = useState([])
   const userId = localStorage.getItem('userId')
   const token = localStorage.getItem('accessToken')
@@ -16,6 +16,7 @@ const School = () => {
       if(response.data){
         console.log(response.data);
         setSchool(response.data[0])
+        setSchoolId(response.data[0].schoolId)
       }
     } catch (error) {
       console.log(error.message)
@@ -34,12 +35,12 @@ const School = () => {
       <div style={{
         width:"600px",
         height:"450px",
-        marginTop:"80px",
+        marginTop:"40px",
         textAlign:"center"
       }}>
       <h1>{school.name}</h1>
       <img style={{
-        marginTop:"10px",
+        marginTop:"20px",
         height:"400px",
         width:"600px"
       }} src='/school-image.avif' alt='schoolImage'/>
