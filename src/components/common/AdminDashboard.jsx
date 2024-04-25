@@ -3,9 +3,10 @@ import Students from "../pages/Students";
 import Navbar from "./Navbar";
 import Teachers from "../pages/Teachers";
 import Classes from "../pages/Classes";
+import School from "../pages/School";
 
 const AdminDashboard = () => {
-  const [page, setPage] = useState("students");
+  const [page, setPage] = useState("school");
 
   const renderPage = () => {
     switch (page) {
@@ -15,8 +16,10 @@ const AdminDashboard = () => {
         return <Teachers/>
       case "classes":
         return <Classes/>
+      case "school":
+        return <School/>
       default:
-        return <Students/>
+        return <School/>
     }
   };
   return (

@@ -12,6 +12,7 @@ const Navbar = ({setPage}) => {
         width: "100%",
         height: "60px",
         display: "flex",
+        position:"fixed"
       }}
     >
       <div
@@ -19,7 +20,6 @@ const Navbar = ({setPage}) => {
           display: "flex",
           width: "100%",
           height: "100%",
-          // border: "1px solid black",
           boxShadow:"1px 1px 10px 2px grey",
           alignItems: "center",
           justifyContent: "space-between",
@@ -34,7 +34,9 @@ const Navbar = ({setPage}) => {
           <h2
             style={{
               marginLeft: "20px",
+              cursor:"pointer"
             }}
+            onClick={() => handleClick("school")}
           >
             School Management
           </h2>
