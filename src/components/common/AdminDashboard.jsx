@@ -7,24 +7,26 @@ import School from "../pages/School";
 
 const AdminDashboard = () => {
   const [page, setPage] = useState("school");
+  const [schoolId, setSchoolId] = useState(0);
+  const school = <School setSchoolId={setSchoolId} />;
 
   const renderPage = () => {
     switch (page) {
       case "students":
-        return <Students />;
+        return <Students schoolId={schoolId}/>;
       case "teachers":
-        return <Teachers/>
+        return <Teachers />;
       case "classes":
-        return <Classes/>
+        return <Classes />;
       case "school":
-        return <School/>
+        return school;
       default:
-        return <School/>
+        return school;
     }
   };
   return (
     <div>
-      <Navbar setPage={setPage}/>
+      <Navbar setPage={setPage} />
       {renderPage()}
     </div>
   );
