@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import Users from "./Users";
+import Users from "../common/Users";
 
 const Students = ({ schoolId }) => {
   const token = localStorage.getItem("accessToken");

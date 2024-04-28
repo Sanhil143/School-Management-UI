@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import Users from "./Users";
+import Users from "../common/Users";
 
 const ClassStudents = ({ selectedClass }) => {
   const token = localStorage.getItem("accessToken");
@@ -17,7 +17,17 @@ const ClassStudents = ({ selectedClass }) => {
       console.log(error.message);
     }
   };
-  return <Users schoolId={selectedClass.schoolId} fetchFunction={fetchClassStudent}/>
+  return (
+    <div>
+      <div>
+      <h2 style={{
+        marginTop:"20px",
+        textAlign:"center"
+      }}>{selectedClass.className}</h2>
+      </div>
+      <Users schoolId={selectedClass.schoolId} fetchFunction={fetchClassStudent}/>
+    </div>
+  )
 };
 
 export default ClassStudents;
