@@ -13,13 +13,15 @@ const AdminDashboard = () => {
   const renderPage = () => {
     switch (page) {
       case "students":
-        return <Students schoolId={schoolId}/>;
+        return <Students schoolId={schoolId} />;
       case "teachers":
-        return <Teachers schoolId={schoolId}/>;
+        return <Teachers schoolId={schoolId} />;
       case "classes":
-        return <Classes schoolId={schoolId}/>;
+        return <Classes schoolId={schoolId} setPage={setPage} page={page} />;
       case "school":
         return school;
+      case "class-details":
+        return <Classes schoolId={schoolId} setPage={setPage} />;
       default:
         return school;
     }

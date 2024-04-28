@@ -5,7 +5,6 @@ const UserDetails = ({ user, cancel }) => {
   if (!user) {
     return null;
   }
-  console.log(user);
   return (
     <>
       <div

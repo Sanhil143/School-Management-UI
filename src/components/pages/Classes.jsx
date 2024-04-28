@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ClassStudents from "./ClassStudents";
 
-const Classes = ({ schoolId }) => {
+const Classes = ({ schoolId, setPage, page }) => {
   const [classes, setClasses] = useState([]);
   const [selectClass, setSelectClass] = useState({});
   const userId = localStorage.getItem("userId");
@@ -27,13 +27,22 @@ const Classes = ({ schoolId }) => {
     }
   };
 
+  
   useEffect(() => {
     fetchClass();
-  }, []);
+    if(page==="classes")
+    {
+     setSelectClass({})
+    }
+  }, [page]);
 
   const handleClassStudent = (selectedClass) => {
     setSelectClass(selectedClass);
+    setPage("class-details")
+
   };
+
+
 
   return (
     <div>
