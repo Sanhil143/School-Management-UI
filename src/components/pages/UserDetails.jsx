@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { dateFormatter } from "../../utils/dateFormater";
 
-const StudentDetail = ({ students, cancel }) => {
-  if (!students) {
+const UserDetails = ({ user, cancel }) => {
+  if (!user) {
     return null;
   }
-  console.log(students);
+  console.log(user);
   return (
     <>
       <div
@@ -50,18 +50,18 @@ const StudentDetail = ({ students, cancel }) => {
               fontWeight: "bold",
             }}
           >
-            UniqueId:{students.studentId}
+            UniqueId:{user.studentId || user.teacherId}
           </span>
           <span
             style={{
               fontWeight: "bold",
             }}
           >
-            Joined:{dateFormatter(students.createdAt)}
+            Joined:{dateFormatter(user.createdAt)}
           </span>
         </div>
         <div style={{ marginTop: "20px" }}>
-          <h2>{students.schoolName}</h2>
+          <h2>{user.schoolName}</h2>
           <img
             style={{
               width: "200px",
@@ -75,7 +75,7 @@ const StudentDetail = ({ students, cancel }) => {
           />
         </div>
         <h3>
-          {students.firstName} {students.lastName}
+          {user.firstName} {user.lastName}
         </h3>
         <div
           style={{
@@ -101,4 +101,4 @@ const StudentDetail = ({ students, cancel }) => {
   );
 };
 
-export default StudentDetail;
+export default UserDetails;
