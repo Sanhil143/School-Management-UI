@@ -17,7 +17,7 @@ const AdminDashboard = () => {
       case "teachers":
         return <Teachers schoolId={schoolId}/>;
       case "classes":
-        return <Classes />;
+        return <Classes schoolId={schoolId}/>;
       case "school":
         return school;
       default:
