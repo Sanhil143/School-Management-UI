@@ -65,7 +65,7 @@ const Navbar = ({setPage}) => {
             marginRight: "40px",
           }}
         >
-          <li className="navLi">Profile</li>
+          <li className="navLi" onClick={() => handleClick("profile")}>Profile</li>
           <li className="navLi" onClick={() => handleLogout()}>Logout</li>
         </ul>
       </div>

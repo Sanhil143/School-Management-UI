@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Teachers from "../pages/Teachers";
 import Classes from "../pages/Classes";
 import School from "../pages/School";
+import Profile from "../pages/Profile";
 
 const AdminDashboard = () => {
   const [page, setPage] = useState("school");
@@ -22,6 +23,8 @@ const AdminDashboard = () => {
         return school;
       case "class-details":
         return <Classes schoolId={schoolId} setPage={setPage} />;
+      case "profile":
+        return <Profile />;
       default:
         return school;
     }
