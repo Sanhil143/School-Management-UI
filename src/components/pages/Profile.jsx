@@ -1,6 +1,15 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { dateFormatter } from "../../utils/dateFormater";
 const Profile = () => {
+  const [showEditForm, setShowEditForm] = useState(false)
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
+  const email = localStorage.getItem("email");
+  const createdAt = localStorage.getItem("createdAt");
+
+  const toggleEditForm = () => {
+    setShowEditForm(!showEditForm);
+  }
   return (
     <div
       style={{
@@ -16,33 +25,72 @@ const Profile = () => {
           marginTop: "40px",
           width: "75%",
           height: "65%",
-          border: "1px solid black",
-          textAlign:"center"
+          borderRadius: "30px",
+          textAlign: "center",
+          backgroundColor: "gainsboro",
+          boxShadow: "1px 1px 10px 2px grey",
         }}
       >
         <div
           style={{
-            height:"140px",
-            border: "1px solid black",
+            height: "140px",
           }}
         >
           <img
             style={{
-              marginTop: "10px",
+              marginTop: "20px",
               width: "120px",
               height: "120px",
               borderRadius: "50%",
-              objectFit:"cover",
-              objectPosition:"top center",
+              objectFit: "cover",
+              objectPosition: "top center",
             }}
             src="/san.jpg"
             alt="profilePic"
           />
         </div>
-        <h4>My Name</h4>
-        <h6 style={{
-          marginTop:"20px"
-        }}>email</h6>
+        <h4
+          style={{
+            marginTop: "20px",
+          }}
+        >
+          {firstName} {lastName}
+        </h4>
+        <p
+          style={{
+            marginTop: "10px",
+          }}
+        >
+          {email}
+        </p>
+        <div
+          style={{
+            height: "40px",
+            marginTop: "80px",
+          }}
+        >
+          <button
+            style={{
+              height: "25px",
+              width: "120px",
+              borderRadius: "10px",
+              backgroundColor: "black",
+              color: "white",
+              cursor: "pointer",
+              border: "none",
+            }}
+          >
+            edit profile
+          </button>
+        </div>
+      </div>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "50px",
+        }}
+      >
+        <p>Joined:{dateFormatter(createdAt)}</p>
       </div>
     </div>
   );
