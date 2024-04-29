@@ -23,6 +23,10 @@ const Login = () => {
       if (response.data) {
         localStorage.setItem("accessToken", response.data.token);
         localStorage.setItem("userId", response.data.user[0].userId);
+        localStorage.setItem("email", response.data.user[0].email);
+        localStorage.setItem("firstName", response.data.user[0].firstName);
+        localStorage.setItem("lastName", response.data.user[0].lastName);
+        localStorage.setItem("createdAt", response.data.user[0].createdAt);
         if (response.data.user[0].role === "Admin") {
           navigate("/adminDashboard");
         } else {
