@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dateFormatter } from "../../utils/dateFormater";
+import UpdateProfile from "./UpdateProfile";
 const Profile = () => {
   const [showEditForm, setShowEditForm] = useState(false)
   const firstName = localStorage.getItem("firstName");
@@ -10,8 +11,13 @@ const Profile = () => {
   const toggleEditForm = () => {
     setShowEditForm(!showEditForm);
   }
+
+  const handleCancel = () => {
+    setShowEditForm(false)
+  }
   return (
-    <div
+    <div>
+      <div
       style={{
         margin: "auto",
         width: "50%",
@@ -70,6 +76,7 @@ const Profile = () => {
           }}
         >
           <button
+          onClick={() => toggleEditForm()}
             style={{
               height: "25px",
               width: "120px",
@@ -80,7 +87,7 @@ const Profile = () => {
               border: "none",
             }}
           >
-            edit profile
+            Edit Profile
           </button>
         </div>
       </div>
@@ -92,6 +99,8 @@ const Profile = () => {
       >
         <p>Joined:{dateFormatter(createdAt)}</p>
       </div>
+    </div>
+    {showEditForm && <UpdateProfile cancel={handleCancel}/>}
     </div>
   );
 };
