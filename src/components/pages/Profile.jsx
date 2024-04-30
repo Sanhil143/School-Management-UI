@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { dateFormatter } from "../../utils/dateFormater";
 import UpdateProfile from "./UpdateProfile";
-import axios from "axios";
+
 const Profile = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const firstName = localStorage.getItem("firstName");
