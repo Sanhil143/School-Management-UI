@@ -173,7 +173,11 @@ const Students = ({ schoolId }) => {
           </div>
         </>
       )}
-      <Users schoolId={schoolId} fetchFunction={fetchStudent} handleSubmit={handleSubmit} />
+      <Users
+        schoolId={schoolId}
+        fetchFunction={fetchStudent}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 };
