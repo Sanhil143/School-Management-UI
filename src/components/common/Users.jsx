@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UserDetails from "./UserDetails";
 
-const Users = ({ schoolId, fetchFunction }) => {
+const Users = ({ schoolId, fetchFunction, handleSubmit }) => {
   const [user, setUser] = useState([]);
   const [selectUser, setSelectUser] = useState(null);
 
@@ -17,7 +17,7 @@ const Users = ({ schoolId, fetchFunction }) => {
   };
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [handleSubmit]);
 
   const handleCancelButton = () => {
     setSelectUser(null);
