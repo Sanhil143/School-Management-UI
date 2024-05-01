@@ -12,7 +12,7 @@ const UpdateProfile = ({ user, updatedData, cancel }) => {
   };
 
   const handleButton = () => {
-    updatedData(newData)
+   updatedData(newData)
   }
 
   const inputStyle = {
