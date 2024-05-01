@@ -9,7 +9,6 @@ const Users = ({ schoolId, fetchFunction }) => {
     try {
       const response = await fetchFunction(schoolId);
       if (response.data) {
-        console.log(response.data);
         setUser(response.data);
       }
     } catch (error) {

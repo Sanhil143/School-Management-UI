@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { dateFormatter } from "../../utils/dateFormater";
 import UpdateProfile from "./UpdateProfile";
+import axios from "axios";
 
 const Profile = () => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("accessToken");
   const firstName = localStorage.getItem("firstName");
   const lastName = localStorage.getItem("lastName");
   const email = localStorage.getItem("email");
@@ -20,9 +23,36 @@ const Profile = () => {
 
   const handleUpdateProfile = async (updatedData) => {
     try {
-      // const response = await axios.post(``)
-      console.log(updatedData);
-      setShowEditForm(false)
+      const formdata = new FormData();
+      if (updatedData.firstName !== "") {
+        formdata.append("firstName", updatedData.firstName);
+        localStorage.setItem("firstName",updatedData.firstName)
+      }
+      if (updatedData.lastName !== "") {
+        formdata.append("lastName", updatedData.lastName);
+        localStorage.setItem("lastName",updatedData.lastName)
+      }
+      if (updatedData.email !== "") {
+        formdata.append("email", updatedData.email);
+        localStorage.setItem("email",updatedData.email)
+      }
+      if (updatedData.firstName !== "" || updatedData.lastName !== "" || updatedData.email !== "") {
+        const response = await axios.patch(
+          `http://localhost:3000/api/v1/user/updateProfile/${userId}`,
+          formdata,
+          {
+            headers: {
+              Authorization: `bearer ${token}`,
+            },
+          }
+        );
+        if (response.data) {
+          // alert("profile updated");
+          setShowEditForm(false);
+        }
+      } else {
+        console.log("please use with some data");
+      }
     } catch (error) {
       console.error(error.message);
     }

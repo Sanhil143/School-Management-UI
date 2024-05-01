@@ -24,15 +24,14 @@ const Signup = () => {
         `http://localhost:3000/api/v1/user/signup`,
         formData
       );
-  
+
       if (response.data.message === "user account created successfully") {
-        navigate('/')
-      }
-      else{
-        alert('internal server error')
+        navigate("/");
+      } else {
+        alert("internal server error");
       }
     } catch (error) {
-      alert('internal server error')
+      alert("internal server error");
     }
   };
 
