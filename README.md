@@ -1,1 +1,1 @@
-School-Management by Sanhil❤️
+SchoolManagement by Sanhil❤️
