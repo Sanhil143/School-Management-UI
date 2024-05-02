@@ -28,7 +28,7 @@ const Login = () => {
         localStorage.setItem("lastName", response.data.user[0].lastName);
         localStorage.setItem("createdAt", response.data.user[0].createdAt);
         if (response.data.user[0].role === "Admin") {
-          navigate("/adminDashboard",{ replace: true });
+          navigate("/adminDashboard", { replace: true });
         } else {
           navigate("/dashboard");
         }
