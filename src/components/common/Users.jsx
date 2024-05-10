@@ -35,6 +35,8 @@ const Users = ({ schoolId, fetchFunction, handleSubmit }) => {
         style={{
           display: "flex",
           flexWrap: "wrap",
+          justifyContent: "center", 
+          alignContent: "flex-start",
           width: "50%",
           height: "100vh",
           margin: "auto",
